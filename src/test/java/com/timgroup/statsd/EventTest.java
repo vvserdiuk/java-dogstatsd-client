@@ -85,4 +85,18 @@ public class EventTest {
         assertEquals("text1", event.getText());
         assertEquals(expectedMillis, event.getMillisSinceEpoch());
     }
+
+    @Test
+    public void builds_without_text() {
+        final long expectedMillis = 1234567000;
+        final Date date = new Date(expectedMillis);
+        final Event event = Event.builder()
+                .withTitle("title1")
+                .withDate(date)
+                .build();
+
+        assertEquals("title1", event.getTitle());
+        assertEquals("", event.getText());
+        assertEquals(expectedMillis, event.getMillisSinceEpoch());
+    }
 }
